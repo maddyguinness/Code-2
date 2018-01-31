@@ -14,6 +14,8 @@ float r = 20;
 float g = 10;
 float c = 10;
 
+/// \n = new line in console 
+
 Ball b;
 Ball b2;
 Ball b3;
