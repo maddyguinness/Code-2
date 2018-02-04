@@ -1,4 +1,6 @@
-var ball;
+var ball1;
+var ball2;
+var ball3;
 var paddle;
 var paddle2;
 
@@ -25,7 +27,9 @@ createCanvas(1000,700);
 y = width/2; 
 paddle = new Paddle(1);
 paddle2 = new Paddle(0);
-ball = new Ball();
+ball1 = new Ball();
+ball2 = new Ball();
+ball3 = new Ball();
 }
 
 function draw() {
@@ -37,9 +41,17 @@ var l = random(0, 255);
 var p = random(0, 255);
 var q = random(0, 255);
 
-ball.display();
-ball.update();
-ball.checkColl();
+ball1.display();
+ball1.update();
+ball1.checkColl();
+
+ball2.display();
+ball2.update();
+ball2.checkColl();
+
+ball3.display();
+ball3.update();
+ball3.checkColl();
 
 paddle.display(1);
 // console.log(paddle.x) ;
@@ -61,52 +73,10 @@ textSize(60);
 
   fill(l,p,q);
   text(p1Score,width/2 - 95,50);
-  text(p2Score,width/2 + 70,50);
+  text(p2Score,width/2 +80,50);
 }
 
-	function keyPressed(){
-
-		if(keyCode == UP_ARROW){
-		p2Up = true;
-	    p1Up = true;
-		paddle.y++
-		}
-
-		if(keyCode == DOWN_ARROW){
-		p2Down = true;
-		p1Down = true;
-		paddle.y--
-		}
-	}
-
-function keyTyped(){
-		if(key === 'w'){
-		p2Up = true;
-	    p1Up = true;
-	    y++;
-		}
-
-		if(key === 's'){
-		p2Down = true;
-	    p1Down = true;
-	    y--;
-	}
-}
-
-function keyReleased(){
-
-		if(keyCode == UP_ARROW){
-		p2Up = false;
-	    p1Up = false;
-		y++
-		}
-
-		if(keyCode == DOWN_ARROW){
-		p2Down = false;
-		p1Down = false;
-		y--
-		}
-	}
+	
 
 
 function Ball(){
@@ -176,7 +146,7 @@ if (this.x > paddle2.x && this.x < paddle2.x + paddle2.w) {
 }
 
 
-function Paddle( whichPlayer){
+function Paddle(whichPlayer){
 this.x;
 this.y;
 this.w;
@@ -226,6 +196,51 @@ if (whichPlayer === 0) {
     }
     }
 }
+function keyPressed(){
+
+    if(keyCode === UP_ARROW){
+    p2Up = true;
+      p1Up = true;
+      
+  
+    }
+
+    if(keyCode === DOWN_ARROW){
+    p2Down = true;
+    p1Down = true;
+    
+    }
+  }
+
+function keyTyped(){
+    if(key === 'w'){
+    p2Up = true;
+      p1Up = true;
+      
+    }
+
+    if(key === 's'){
+    p2Down = true;
+      p1Down = true;
+      
+  }
+}
+
+function keyReleased(){
+
+    if(keyCode === UP_ARROW){
+    p2Up = false;
+      p1Up = false;
+    
+
+    }
+
+    if(keyCode === DOWN_ARROW){
+    p2Down = false;
+    p1Down = false;
+    
+    }
+  }
 
 
 
