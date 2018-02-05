@@ -55,11 +55,11 @@ ball3.checkColl();
 
 paddle.display(1);
 // console.log(paddle.x) ;
-paddle.update(1);
+paddle.update();
 
 paddle2.display(0);
 // console.log(paddle2.x) ;
-paddle2.update(0);
+paddle2.update();
  
 
 for (var dot=1; dot<30; dot++) {
@@ -147,26 +147,25 @@ if (this.x > paddle2.x && this.x < paddle2.x + paddle2.w) {
 
 
 function Paddle(whichPlayer){
-this.x;
-this.y;
-this.w;
-this.h;
-this.playerNum = this.whichPlayer;
+  this.x;
+  this.y;
+  this.w;
+  this.h;
+  this.playerNum = whichPlayer;
 
-if (whichPlayer === 0) {
-      this.x = 30;
-      this.y = height/2;
-      this.w = 20;
-      this.h = 150;
-    } else if (whichPlayer === 1) {
-      this.y = height/2;
-      this.w = 20;
-      this.h = 150;
-      this.x = width-30-this.w;
-    }
+  if (whichPlayer === 0) {
+    this.x = 30;
+    this.y = height/2;
+    this.w = 20;
+    this.h = 150;
+  } else if (whichPlayer === 1) {
+    this.y = height/2;
+    this.w = 20;
+    this.h = 150;
+    this.x = width-30-this.w;
+  }
 
-
-    this.display = function(){
+  this.display = function(){
 
     rectMode(CENTER);
     var r = random(0, 255);
@@ -174,18 +173,17 @@ if (whichPlayer === 0) {
     var b = random(0, 255);
     fill(this.r, this.g, this.b);
     rect(this.x, this.y, 10, random(-10,200));
-    }
+  }
 
-    this.update = function(){
-
-    	if (this.playerNum === 0) {
+  this.update = function(){
+  	if (this.playerNum === 0) {
       if (p1Up) {
         this.y-=10;
       } 
       if (p1Down) {
         this.y+=10;
       }
-    }
+    } 
     if (this.playerNum ===1) {
       if (p2Up) {
         this.y-=10;
@@ -194,53 +192,46 @@ if (whichPlayer === 0) {
         this.y+=10;
       }
     }
-    }
+  }
 }
+
+
 function keyPressed(){
-
-    if(keyCode === UP_ARROW){
-    p2Up = true;
-      p1Up = true;
-      
-  
-    }
-
-    if(keyCode === DOWN_ARROW){
-    p2Down = true;
-    p1Down = true;
-    
-    }
+  if(key === 'W'){
+    p1Up = true;
   }
 
-function keyTyped(){
-    if(key === 'w'){
-    p2Up = true;
-      p1Up = true;
-      
-    }
+  if(key === 'S'){
+    p1Down = true; 
+  }
 
-    if(key === 's'){
+  if(keyCode === UP_ARROW){
+    p2Up = true;  
+  }
+
+  if(keyCode === DOWN_ARROW){
     p2Down = true;
-      p1Down = true;
-      
   }
 }
+
 
 function keyReleased(){
-
-    if(keyCode === UP_ARROW){
-    p2Up = false;
-      p1Up = false;
-    
-
-    }
-
-    if(keyCode === DOWN_ARROW){
-    p2Down = false;
-    p1Down = false;
-    
-    }
+  if(key === 'W'){
+    p1Up = false;
   }
+
+  if(key === 'S'){
+    p1Down = false; 
+  }
+
+  if(keyCode === UP_ARROW){
+      p2Up = false;  
+  }
+
+  if(keyCode === DOWN_ARROW){
+    p2Down = false;
+  }
+}
 
 
 
